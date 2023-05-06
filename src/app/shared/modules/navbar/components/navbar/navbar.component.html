@@ -1,0 +1,221 @@
+
+
+<nav class="fixed h-24 bg-black w-full pt-4 z-10">
+    <div class="w-full h-full flex items-center justify-between md:justify-around text-zinc-200 px-8">
+        <img src="../../../../../../assets/images/logo1.PNG" class="h-full">
+
+        <div class="hidden flex-1 items-center justify-center md:flex">
+            <div class="relative flex h-full cursor-pointer items-center p-4 font-bold text-zinc-200 transition-colors ease-in-out hover:text-sky-400">
+              <span>Home</span>
+            </div>
+            
+            <div class="relative flex h-full cursor-pointer items-center p-4 font-bold text-zinc-200 transition-all ease-in-out hover:text-sky-400 group">
+              <span>Foundry</span>
+              <div
+                class="absolute top-full right-0 hidden whitespace-nowrap rounded-b-md bg-black text-right group-hover:block"
+              >
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <span>Pre-built PCs</span>
+                </div>
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <span>Laptops</span>
+                </div>
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <span>Loose Parts</span>
+                </div>
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <span>Peripherals</span>
+                </div>
+              </div>
+            </div>
+            <div class="relative flex h-full cursor-pointer items-center p-4 font-bold text-zinc-200 transition-all ease-in-out hover:text-sky-400 group">
+              <span>Forge</span>
+              <div
+                class="absolute top-full right-0 hidden whitespace-nowrap rounded-b-md bg-black text-right group-hover:block"
+              >
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <a [routerLink]="['/category']" class="hover:text-sky-400">Forge your own PC</a>
+                </div>
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <span>Our Picks</span>
+                </div>
+                
+              </div>
+            </div>
+            <div class="relative flex h-full cursor-pointer items-center p-4 font-bold text-zinc-200 transition-colors ease-in-out hover:text-sky-400">
+              <span>Estimation</span>
+            </div>
+            <div class="relative flex h-full cursor-pointer items-center p-4 font-bold text-zinc-200 transition-colors ease-in-out hover:text-sky-400">
+              <span>Support</span>
+            </div>
+        </div>
+        <div class="hidden md:flex">
+        <ng-container *ngIf="isLoggedIn$ | async">
+          
+            <div class="relative flex h-full cursor-pointer items-center p-4 font-bold text-zinc-200 transition-all ease-in-out hover:text-sky-400 group">
+              <a href="#" class="hover:text-blue">
+                <button class="w-12 h-12 items-center justify-center text-xl rounded-full border-2 border-sky-400 hidden md:flex">
+                    <i class="fa-solid fa-user hover:text-blue-500"></i>
+                </button></a>
+              <div
+                class="absolute top-full right-0 hidden whitespace-nowrap rounded-b-md bg-black text-right group-hover:block"
+              >
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <span>Orders</span>
+                </div>
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <span>Profile</span>
+                </div>
+                <div
+                  class="cursor-pointer p-4 font-bold text-zinc-200 hover:text-sky-400 transition-colors ease-in-out hover:bg-white/5"
+                >
+                  <a href="" class="hover:text-red-600">LOGOUT</a>
+                </div>
+                
+              </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isAnonymous$ | async">
+
+          <a [routerLink]="['/login']" class="text-white font-bold hover:no-underline hover:text-sky-500">LOGIN</a>
+
+        </ng-container>
+      </div>
+        <button class="w-12 h-12 items-center justify-center flex md:hidden text-2xl" (click)="toggleNavbarWidth()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+
+    <div class="md:hidden bg-black w-full h-96 border-t transition-all ease-in-out duration-1000" [ngClass]="{'hidden': isNavbarWidth16, 'block': !isNavbarWidth16}">
+
+        <div class="w-full h-full flex flex-col justify-around items-center text-zinc-200 py-8">
+            <a href="" class="font-bold hover:text-sky-400 hover:no-underline">Foundry</a>
+            <a href="" class="font-bold hover:text-sky-400 hover:no-underline">Forge</a>
+            <a href="" class="font-bold hover:text-sky-400 hover:no-underline">Estimator</a>
+            <a href="" class="font-bold hover:text-sky-400 hover:no-underline">Support</a>
+
+            <ng-container *ngIf="isLoggedIn$ | async">
+              <a href="" class="font-bold hover:text-red-600 ">Logout</a>
+
+            </ng-container>
+            <ng-container *ngIf="isAnonymous$ | async">
+              <a [routerLink]="['/login']" class="font-bold hover:text-sky-400 ">LogIn</a>
+
+            </ng-container>
+
+        </div>
+
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<nav class="fixed h-16 bg-black w-full border-b flex items-center px-5 py-2 z-10" >
+    <div class="md:mr-12 w-0">
+        <button (click)="toggleNavbarWidth()" class="active::border-none"><i class="fa-solid fa-bars-staggered text-zinc-200 text-xl hover:text-green-500"></i></button>
+    </div>
+    <div>
+        <img src="../../../../../../assets/images/logo.png" class="h-14">
+    </div>
+
+    <div class="md:flex hidden flex-1 justify-center">
+        <div class="flex justify-between py-3 px-6 border-b space-x-6" >
+            <form class="w-full max-w-md" action="">
+                <div class="relative flex items-center text-zinc-300 focus-within:text-zinc-100 ">
+                    <i class="fa-solid fa-magnifying-glass w-5 h-5 absolute ml-3 pointer-events-none"></i>
+                    <input type="text" name="search" placeholder="Explore" autocomplete="off"
+                    class="w-full pr-3 pl-10 py-2 font-semibold placeholder-zinc-400 text-zinc-100 rounded-2xl border-none ring-2
+                    ring-green-500 focus:ring-green-700 focus:ring-1 bg-transparent">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="md:flex font-bold text-zinc-200 hidden">
+
+        <a class="mx-3 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out " href="#">SUPPORT</a>
+        <a class="mx-3 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out " href="#">CONTACT</a>
+
+    </div>
+    <div class="flex justify-end max-md:flex-1">
+        <div class="mx-4 border p-2 rounded-full h-10 w-10 flex items-center justify-center border-green-500 bg-zinc-300">
+            <i class="fa-regular fa-user text-zinc-900"></i>
+        </div>
+    </div>
+
+    
+</nav>
+
+<nav class="hidden md:block fixed h-screen bg-black border-r transition-all ease-in-out duration-400 z-10 top-16" [ngClass]="{'w-56': !isNavbarWidth16, 'w-16': isNavbarWidth16}">
+    <div class="flex flex-col justify-between h-full py-2 bottom-0">
+
+        <div class="flex flex-row h-16 items-center px-6 font-bold">
+            <i class="fa-solid fa-house text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out"></i>
+            <a href="#" class="text-zinc-200 flex-1 text-left pl-12 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out" [ngClass]="{'block': !isNavbarWidth16, 'hidden': isNavbarWidth16}">Home</a>
+        </div>
+
+        <hr class="bg-zinc-500 w-full">
+        <div class="flex flex-row h-16 items-center px-6 font-bold">
+            <i class="fa-brands fa-wpexplorer text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out"></i>
+            <a href="#" class="text-zinc-200 flex-1 text-left pl-12 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out" [ngClass]="{'block': !isNavbarWidth16, 'hidden': isNavbarWidth16}">Explore</a>
+        </div>
+        <hr class="bg-zinc-500 w-full">
+
+        <div class="flex flex-row h-16 items-center px-6 font-bold">
+            <i class="fa-solid fa-palette text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out"></i>
+            <a href="#" class="text-zinc-200 flex-1 text-left pl-12 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out" [ngClass]="{'block': !isNavbarWidth16, 'hidden': isNavbarWidth16}">Learn</a>
+        </div>
+        <hr class="bg-zinc-500 w-full">
+
+        <div class="flex flex-row h-16 items-center px-6 font-bold">
+            <i class="fa-solid fa-users-rays text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out"></i>
+            <a href="#" class="text-zinc-200 flex-1 text-left pl-12 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out" [ngClass]="{'block': !isNavbarWidth16, 'hidden': isNavbarWidth16}">Community</a>
+        </div>
+        
+        <div class="flex flex-1 flex-row h-16 items-end px-6 font-bold pb-36">
+            <i class="fa-solid fa-right-to-bracket text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out"></i>
+            <a [routerLink]="['/login']" class="text-zinc-200 flex-1 text-left pl-12 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out" [ngClass]="{'block': !isNavbarWidth16, 'hidden': isNavbarWidth16}">Login</a>
+        </div>
+        
+        
+
+    </div>
+</nav>
+
+
+<nav class="md:hidden fixed bottom-0 h-16 w-full bg-black">
+    <div class="flex justify-around w-full py-4">
+        <i class="fa-solid fa-house text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out text-xl"></i>
+        <i class="fa-brands fa-wpexplorer text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out text-xl"></i>
+        <i class="fa-solid fa-palette text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out text-xl"></i>
+        <i class="fa-solid fa-users-rays text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out text-xl"></i>
+        <i class="fa-solid fa-right-to-bracket text-zinc-200 w-6 hover:no-underline hover:text-green-500 transition-all duration-600 ease-in-out text-xl"></i>
+    </div>
+</nav>
+
+-->

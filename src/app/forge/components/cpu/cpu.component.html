@@ -1,0 +1,79 @@
+<div class="relative h-screen w-full bg-cover bg-fixed bg-center flex justify-center items-center" style="background-image: url(../../../../assets/images/cpubg.png);">
+  <div class="absolute inset-0 bg-black bg-opacity-75 filter blur-lg"></div>
+  <div class="fixed w-[640px] h-full md:h-5/6 bg-gradient-to-br from-slate-900 to-slate-700 rounded-xl shadow-md z-10 flex flex-col items-center justify-center py-6">
+      <h1 class="text-zinc-200 text-6xl text-center" style="font-family: Progress;">SELECT THE PROCESSOR</h1>
+      <div class="w-full px-24 pt-12 flex flex-col items-center">
+         
+        <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select CPU Brand</label>
+        <select id="brand" [(ngModel)]="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-4" (change)="fetchCores()">
+          <option value="Intel">Intel</option>
+          <option value="AMD">AMD</option>
+        </select>
+
+        <label for="cores" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select number of cores</label>
+        <select id="cores" [(ngModel)]="cores" [disabled]="!brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4" (change)="fetchClock()">
+          <option *ngFor="let coreCount of coreCounts" [value]=coreCount>{{ coreCount }}</option>
+        </select>
+
+        <label for="clock" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Core Clock</label>
+        <select id="clock" [(ngModel)]="clock" [disabled]="!brand&&!cores" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4" (change)="fetchCpu()">
+          <option *ngFor="let clockCount of clocks" [value]="clockCount">{{ clockCount }}</option>
+        </select>
+
+        <label for="cpu" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select CPU</label>
+        <select id="cpu" [(ngModel)]="cpu" [disabled]="!brand&&!cores&&!clock" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4" (change)="cpuDetails()">
+          <option *ngFor="let cpuCount of cpus" [value]="cpuCount">{{ cpuCount }}</option>
+        </select>
+
+        <div *ngIf="cpu" class="w-full text-zinc-300">
+          <label for="cpu" class="block mb-2 text-sm text-center font-medium text-gray-900 dark:text-white">Selected CPU</label>
+            <span class="font-bold">Processor Model: </span>{{Details.name}}<br>
+            <span class="font-bold">Cores: </span>{{Details.core_count}} <br>
+            <span class="font-bold">Core Clock: </span>{{Details.core_clock}} <span class="font-bold">  Boost Clock: </span> {{Details.boost_clock}} <br>
+            <span class="font-bold">Integrated Graphics: </span>{{Details.integrated_graphics ? Details.integrated_graphics : 'none'}}<br>
+            <span class="font-bold">TDP: </span>{{Details.tdp}}
+        </div>
+        
+        <h2 *ngIf="!cpu" class="text-zinc-300 my-4">Not sure what to select?  <a href="#" class="text-pink-500 hover:text-white">Browse Processors</a></h2>
+        
+        <button type="submit" class="p-2 mt-4 text-white w-1/3 bg-sky-600 rounded" (click)="selectCpu()">Next</button>
+
+      </div>
+      
+
+  </div>
+</div>
+<!--
+<select [(ngModel)]="selectedOption1" class="p-2 border rounded">
+  <option value="">-- Select an option --</option>
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+</select>
+
+<select [(ngModel)]="selectedOption2" class="p-2 border rounded" [disabled]="!selectedOption1">
+  <option value="">-- Select an option --</option>
+  <option value="suboption1">Suboption 1</option>
+  <option value="suboption2">Suboption 2</option>
+  <option value="suboption3">Suboption 3</option>
+</select>-->
+
+
+<!--<label for="processor-type">Select Processor Type:</label>
+<select name="processor-type" id="processor-type" [(ngModel)]="selectedProcessorType" (change)="onProcessorTypeChange()">
+  <option value="">Select Processor Type</option>
+  <option value="intel">Intel</option>
+  <option value="amd">AMD</option>
+</select>
+
+<label for="processor-generation">Select Processor Generation:</label>
+<select name="processor-generation" id="processor-generation" [(ngModel)]="selectedProcessorGeneration" (change)="onProcessorGenerationChange()" [disabled]="!selectedProcessorType">
+  <option value="">Select Processor Generation</option>
+  <option *ngFor="let generation of generations" [value]="generation">{{ generation }}</option>
+</select>
+
+<label for="processor-name">Select Processor Name:</label>
+<select name="processor-name" id="processor-name" [(ngModel)]="selectedProcessorName" [disabled]="!selectedProcessorType || !selectedProcessorGeneration">
+  <option value="">Select Processor Name</option>
+  <option *ngFor="let processor of processors" [value]="processor">{{ processor }}</option>
+</select>-->

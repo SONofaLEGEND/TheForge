@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@font-face {
+    font-family: 'Poppins';
+    src: url(../src/assets/Poppins.ttf);
+}
+@font-face {
+    font-family: 'Progress';
+    src: url(../src/assets/Progress.ttf);
+}
+
+* {
+    font-family: 'Poppins';
+}
+::-webkit-scrollbar{
+    display: none;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply p-0;
+  }
+
+a {
+    @apply hover:no-underline;
+}
